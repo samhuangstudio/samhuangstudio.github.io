@@ -1,331 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SamHuang Studio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SamHuang Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    :root {
-      --primary: #18181B;
-      --cta: #2563EB;
-      --bg: #FAFAFA;
-      --text: #18181B;
-    }
-
-    @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #18181B;
-        --text: #FAFAFA;
-      }
-    }
-
-    html {
-      font-size: 16px;
-    }
-
-    body {
-      font-family: 'Archivo', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 1.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      background: transparent;
-    }
-
-    .logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      text-decoration: none;
-      color: var(--text);
-    }
-
-    .nav-email {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text);
-      text-decoration: none;
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
-    }
-
-    .nav-email:hover {
-      opacity: 1;
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      z-index: 10;
-    }
-
-    .hero-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 600;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      opacity: 0.7;
-      max-width: 500px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    #particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    footer {
-      padding: 2rem;
-      text-align: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.875rem;
-      opacity: 0.6;
-      position: relative;
-      z-index: 10;
-    }
-
-    footer a {
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <nav>
-    <a href="#" class="logo">SamHuang Studio</a>
-    <a href="mailto:hello@samhuang.studio" class="nav-email">hello@samhuang.studio</a>
-  </nav>
-
-  <canvas id="particles"></canvas>
-
-  <main>
-    <section class="hero">
-      <h1 class="hero-title">Building digital<br>experiences</h1>
-      <p class="hero-subtitle">A creative studio focused on crafting thoughtful digital products and experiences.</p>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2026 SamHuang Studio · <a href="mailto:hello@samhuang.studio">hello@samhuang.studio</a>
-  </footer>
-
-  <script>
-    (function() {
-      const canvas = document.getElementById('particles');
-      const ctx = canvas.getContext('2d');
-
-      let width, height;
-      let particles = [];
-      let mouse = { x: null, y: null };
-      let animationId;
-
-      const isTouch = 'ontouchstart' in window;
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      const PARTICLE_COUNT = isTouch ? 30 : 80;
-      const PARTICLE_RADIUS = 2;
-      const CONNECTION_DISTANCE = 120;
-      const MOUSE_INFLUENCE_RADIUS = 200;
-      const MOUSE_ATTRACTION_STRENGTH = 0.03;
-      const MAX_SPEED = 1;
-
-      function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+        --primary: #18181b;
+        --cta: #2563eb;
+        --bg: #fafafa;
+        --text: #18181b;
       }
 
-      class Particle {
-        constructor() {
-          this.x = Math.random() * width;
-          this.y = Math.random() * height;
-          this.vx = (Math.random() - 0.5) * MAX_SPEED;
-          this.vy = (Math.random() - 0.5) * MAX_SPEED;
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #18181b;
+          --text: #fafafa;
+        }
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Archivo", sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        background: transparent;
+      }
+
+      .logo {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--text);
+      }
+
+      .nav-email {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text);
+        text-decoration: none;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+      }
+
+      .nav-email:hover {
+        opacity: 1;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 2rem;
+        position: relative;
+        z-index: 10;
+      }
+
+      .hero-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        opacity: 0.7;
+        max-width: 500px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      #particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      footer {
+        padding: 2rem;
+        text-align: center;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.875rem;
+        opacity: 0.6;
+        position: relative;
+        z-index: 10;
+      }
+
+      footer a {
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="logo">SamHuang Studio</a>
+      <a href="mailto:hello@samhuang.studio" class="nav-email"
+        >hello@samhuang.studio</a
+      >
+    </nav>
+
+    <canvas id="particles"></canvas>
+
+    <main>
+      <section class="hero">
+        <h1 class="hero-title">Building the AI<br />experiences</h1>
+        <p class="hero-subtitle">
+          A solo studio focused on crafting thoughtful digital products and
+          experiences.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      &copy; 2026 SamHuang Studio ·
+      <a href="mailto:hello@samhuang.studio">hello@samhuang.studio</a>
+    </footer>
+
+    <script>
+      (function () {
+        const canvas = document.getElementById("particles");
+        const ctx = canvas.getContext("2d");
+
+        let width, height;
+        let particles = [];
+        let mouse = { x: null, y: null };
+        let animationId;
+
+        const isTouch = "ontouchstart" in window;
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        const PARTICLE_COUNT = isTouch ? 30 : 80;
+        const PARTICLE_RADIUS = 2;
+        const CONNECTION_DISTANCE = 120;
+        const MOUSE_INFLUENCE_RADIUS = 200;
+        const MOUSE_ATTRACTION_STRENGTH = 0.03;
+        const MAX_SPEED = 1;
+
+        function resize() {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
         }
 
-        update() {
-          if (prefersReducedMotion) return;
+        class Particle {
+          constructor() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * MAX_SPEED;
+            this.vy = (Math.random() - 0.5) * MAX_SPEED;
+          }
 
-          this.x += this.vx;
-          this.y += this.vy;
+          update() {
+            if (prefersReducedMotion) return;
 
-          if (mouse.x !== null && mouse.y !== null) {
-            const dx = mouse.x - this.x;
-            const dy = mouse.y - this.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+            this.x += this.vx;
+            this.y += this.vy;
 
-            if (distance < MOUSE_INFLUENCE_RADIUS && distance > 0) {
-              const force = (MOUSE_INFLUENCE_RADIUS - distance) / MOUSE_INFLUENCE_RADIUS;
-              this.vx += (dx / distance) * force * MOUSE_ATTRACTION_STRENGTH;
-              this.vy += (dy / distance) * force * MOUSE_ATTRACTION_STRENGTH;
+            if (mouse.x !== null && mouse.y !== null) {
+              const dx = mouse.x - this.x;
+              const dy = mouse.y - this.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < MOUSE_INFLUENCE_RADIUS && distance > 0) {
+                const force =
+                  (MOUSE_INFLUENCE_RADIUS - distance) / MOUSE_INFLUENCE_RADIUS;
+                this.vx += (dx / distance) * force * MOUSE_ATTRACTION_STRENGTH;
+                this.vy += (dy / distance) * force * MOUSE_ATTRACTION_STRENGTH;
+              }
+            }
+
+            const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+            if (speed > MAX_SPEED) {
+              this.vx = (this.vx / speed) * MAX_SPEED;
+              this.vy = (this.vy / speed) * MAX_SPEED;
+            }
+
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+
+            if (this.x < 0) this.x = 0;
+            if (this.x > width) this.x = width;
+            if (this.y < 0) this.y = 0;
+            if (this.y > height) this.y = height;
+          }
+
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, PARTICLE_RADIUS, 0, Math.PI * 2);
+            ctx.fillStyle =
+              getComputedStyle(document.documentElement)
+                .getPropertyValue("--text")
+                .trim() || "#18181B";
+            ctx.fill();
+          }
+        }
+
+        function init() {
+          resize();
+          particles = [];
+          for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(new Particle());
+          }
+        }
+
+        function drawConnections() {
+          const textColor =
+            getComputedStyle(document.documentElement)
+              .getPropertyValue("--text")
+              .trim() || "#18181B";
+          ctx.strokeStyle = textColor;
+          ctx.lineWidth = 0.5;
+
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < CONNECTION_DISTANCE) {
+                const opacity = 1 - distance / CONNECTION_DISTANCE;
+                ctx.globalAlpha = opacity * 0.4;
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+              }
             }
           }
+          ctx.globalAlpha = 1;
+        }
 
-          const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-          if (speed > MAX_SPEED) {
-            this.vx = (this.vx / speed) * MAX_SPEED;
-            this.vy = (this.vy / speed) * MAX_SPEED;
+        function animate() {
+          ctx.clearRect(0, 0, width, height);
+
+          for (const particle of particles) {
+            particle.update();
+            particle.draw();
           }
 
-          if (this.x < 0 || this.x > width) this.vx *= -1;
-          if (this.y < 0 || this.y > height) this.vy *= -1;
+          if (!prefersReducedMotion) {
+            drawConnections();
+          }
 
-          if (this.x < 0) this.x = 0;
-          if (this.x > width) this.x = width;
-          if (this.y < 0) this.y = 0;
-          if (this.y > height) this.y = height;
+          animationId = requestAnimationFrame(animate);
         }
 
-        draw() {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, PARTICLE_RADIUS, 0, Math.PI * 2);
-          ctx.fillStyle = getComputedStyle(document.documentElement)
-            .getPropertyValue('--text').trim() || '#18181B';
-          ctx.fill();
+        function handleMouseMove(e) {
+          mouse.x = e.clientX;
+          mouse.y = e.clientY;
         }
-      }
 
-      function init() {
-        resize();
-        particles = [];
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-          particles.push(new Particle());
+        function handleMouseLeave() {
+          mouse.x = null;
+          mouse.y = null;
         }
-      }
 
-      function drawConnections() {
-        const textColor = getComputedStyle(document.documentElement)
-          .getPropertyValue('--text').trim() || '#18181B';
-        ctx.strokeStyle = textColor;
-        ctx.lineWidth = 0.5;
-
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < CONNECTION_DISTANCE) {
-              const opacity = 1 - (distance / CONNECTION_DISTANCE);
-              ctx.globalAlpha = opacity * 0.4;
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
-            }
+        function handleTouchMove(e) {
+          if (e.touches.length > 0) {
+            mouse.x = e.touches[0].clientX;
+            mouse.y = e.touches[0].clientY;
           }
         }
-        ctx.globalAlpha = 1;
-      }
 
-      function animate() {
-        ctx.clearRect(0, 0, width, height);
-
-        for (const particle of particles) {
-          particle.update();
-          particle.draw();
+        function handleTouchEnd() {
+          mouse.x = null;
+          mouse.y = null;
         }
 
-        if (!prefersReducedMotion) {
-          drawConnections();
+        window.addEventListener("resize", () => {
+          cancelAnimationFrame(animationId);
+          init();
+          animate();
+        });
+
+        if (isTouch) {
+          canvas.addEventListener("touchmove", handleTouchMove);
+          canvas.addEventListener("touchend", handleTouchEnd);
+        } else {
+          canvas.addEventListener("mousemove", handleMouseMove);
+          canvas.addEventListener("mouseleave", handleMouseLeave);
         }
 
-        animationId = requestAnimationFrame(animate);
-      }
-
-      function handleMouseMove(e) {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-      }
-
-      function handleMouseLeave() {
-        mouse.x = null;
-        mouse.y = null;
-      }
-
-      function handleTouchMove(e) {
-        if (e.touches.length > 0) {
-          mouse.x = e.touches[0].clientX;
-          mouse.y = e.touches[0].clientY;
-        }
-      }
-
-      function handleTouchEnd() {
-        mouse.x = null;
-        mouse.y = null;
-      }
-
-      window.addEventListener('resize', () => {
-        cancelAnimationFrame(animationId);
         init();
         animate();
-      });
-
-      if (isTouch) {
-        canvas.addEventListener('touchmove', handleTouchMove);
-        canvas.addEventListener('touchend', handleTouchEnd);
-      } else {
-        canvas.addEventListener('mousemove', handleMouseMove);
-        canvas.addEventListener('mouseleave', handleMouseLeave);
-      }
-
-      init();
-      animate();
-    })();
-  </script>
-</body>
+      })();
+    </script>
+  </body>
 </html>
